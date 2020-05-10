@@ -280,7 +280,7 @@ class _NotlarState extends State<Notlar> {
               },
             );
           } else {
-            return Center(child: Text("Yükleniyor\n\n\n\n\n\n\n\nFrom:ONUR AKDOĞAN"));
+            return Center(child: Text("Yükleniyor\nFrom:ONUR AKDOĞAN"));
           }
         },
       ),
