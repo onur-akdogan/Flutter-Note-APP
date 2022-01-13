@@ -1,3 +1,4 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:not_al/models/kategori.dart';
 import 'package:not_al/models/notlar.dart';
@@ -21,7 +22,7 @@ class _NotDetayState extends State<NotDetay> {
   int secilenOncelik;
   String notBaslik, notIcerik;
   static var _oncelik = ["Düşük", "Orta", "Yüksek"];
-
+  
   @override
   void initState() {
     super.initState();
@@ -47,10 +48,21 @@ class _NotDetayState extends State<NotDetay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: Container(
           child: Column(
         children: <Widget>[
+          AdmobBanner(
+          adUnitId: "ca-app-pub-2062750101933669/2277971562",
+                                adSize: AdmobBannerSize.BANNER,
+                                listener: (AdmobAdEvent event,
+                                    Map<String, dynamic> args) {
+                                  handleEvent(event, args, 'Banner');
+                                },
+                                onBannerCreated:
+                                    (AdmobBannerController controller) {
+                                },
+                              ),
           Container(
             width: 300,
             height: 100,
@@ -150,6 +162,17 @@ class _NotDetayState extends State<NotDetay> {
                             ),
                           ),
                         ),
+                               AdmobBanner(
+          adUnitId: "ca-app-pub-2062750101933669/6025644887",
+                                adSize: AdmobBannerSize.BANNER,
+                                listener: (AdmobAdEvent event,
+                                    Map<String, dynamic> args) {
+                                  handleEvent(event, args, 'Banner');
+                                },
+                                onBannerCreated:
+                                    (AdmobBannerController controller) {
+                                },
+                              ),
                         Row(
                           children: <Widget>[
                             Padding(
@@ -280,3 +303,26 @@ class _NotDetayState extends State<NotDetay> {
         .toList();
   }
 }
+
+GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
+     AdmobBannerSize bannerSize;
+   AdmobInterstitial interstitialAd;
+   AdmobReward rewardAd;
+
+     void handleEvent(
+      AdmobAdEvent event, Map<String, dynamic> args, String adType) {
+    switch (event) {
+      case AdmobAdEvent.loaded:
+    
+        break;
+      case AdmobAdEvent.opened:
+    
+        break;
+      case AdmobAdEvent.closed:
+       
+        break;
+      case AdmobAdEvent.failedToLoad:
+  
+      break;
+      case AdmobAdEvent.rewarded:
+      }}

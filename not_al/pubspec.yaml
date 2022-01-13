@@ -26,6 +26,7 @@ dependencies:
   path_provider: ^1.6.5
   sqflite: any
   font_awesome_flutter: ^8.8.1
+  admob_flutter: ^2.0.0
   
   
 

@@ -1,3 +1,4 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:not_al/utils/database_helper.dart';
 
@@ -21,7 +22,7 @@ class _KategorilerState extends State<Kategoriler> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyleBaslik = Theme.of(context).textTheme.body1.copyWith(
+    TextStyle textStyleBaslik = Theme.of(context).textTheme.bodyText2.copyWith(
         fontSize: 16, fontWeight: FontWeight.w700, fontFamily: 'Raleway');
 
     if (tumKategoriler == null) {
@@ -44,23 +45,38 @@ class _KategorilerState extends State<Kategoriler> {
         child: ListView.builder(
             itemCount: tumKategoriler.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                onTap: () => _kategoriGuncelle(tumKategoriler[index], context),
-                title: Text(
-                  tumKategoriler[index].kategoriBaslik,
-                  style: textStyleBaslik,
-                ),
-                trailing: InkWell(
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.red,
+              return Column(
+                children: [
+                  ListTile(
+                    onTap: () => _kategoriGuncelle(tumKategoriler[index], context),
+                    title: Text(
+                      tumKategoriler[index].kategoriBaslik,
+                      style: textStyleBaslik,
+                    ),
+                    trailing: InkWell(
+                      child: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                      onTap: () => _kategoriSil(tumKategoriler[index].kategoriID),
+                    ),
+                    leading: Icon(
+                      Icons.import_contacts,
+                      color: Colors.indigo,
+                    ),
                   ),
-                  onTap: () => _kategoriSil(tumKategoriler[index].kategoriID),
-                ),
-                leading: Icon(
-                  Icons.import_contacts,
-                  color: Colors.indigo,
-                ),
+                  AdmobBanner(
+          adUnitId: "ca-app-pub-2062750101933669/9964889896",
+                                adSize: AdmobBannerSize.BANNER,
+                                listener: (AdmobAdEvent event,
+                                    Map<String, dynamic> args) {
+                                  handleEvent(event, args, 'Banner');
+                                },
+                                onBannerCreated:
+                                    (AdmobBannerController controller) {
+                                },
+                              ),
+                ],
               );
             }),
       ),
@@ -234,3 +250,27 @@ class _KategorilerState extends State<Kategoriler> {
         });
   }
 }
+
+
+GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
+     AdmobBannerSize bannerSize;
+   AdmobInterstitial interstitialAd;
+   AdmobReward rewardAd;
+
+     void handleEvent(
+      AdmobAdEvent event, Map<String, dynamic> args, String adType) {
+    switch (event) {
+      case AdmobAdEvent.loaded:
+    
+        break;
+      case AdmobAdEvent.opened:
+    
+        break;
+      case AdmobAdEvent.closed:
+       
+        break;
+      case AdmobAdEvent.failedToLoad:
+  
+      break;
+      case AdmobAdEvent.rewarded:
+      }}
