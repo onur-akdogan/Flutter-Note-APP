@@ -53,7 +53,7 @@ class _NotDetayState extends State<NotDetay> {
           child: Column(
         children: <Widget>[
           AdmobBanner(
-          adUnitId: "ca-app-pub-2062750101933669/2277971562",
+          adUnitId: "ca-app-pub-2062750101933669/4408885858",
                                 adSize: AdmobBannerSize.BANNER,
                                 listener: (AdmobAdEvent event,
                                     Map<String, dynamic> args) {
@@ -163,7 +163,7 @@ class _NotDetayState extends State<NotDetay> {
                           ),
                         ),
                                AdmobBanner(
-          adUnitId: "ca-app-pub-2062750101933669/6025644887",
+          adUnitId: "ca-app-pub-2062750101933669/5530395835",
                                 adSize: AdmobBannerSize.BANNER,
                                 listener: (AdmobAdEvent event,
                                     Map<String, dynamic> args) {
